@@ -6,7 +6,7 @@ logger = getLogger(__name__)
 
 
 class ProcessJobs:
-    def __init__(self, sources: list[DataSource] | None) -> None:
+    def __init__(self, sources: list[DataSource] | None = None) -> None:
         self._sources = [] if sources is None else sources
 
     def add_source(self, src: DataSource) -> None:
