@@ -10,12 +10,14 @@ logger = getLogger(__name__)
 
 
 def main():
-    logger.info('Hello')
+    logger.info('Waiting data...')
     process_jobs = ProcessJobs(
         [
             MockExternalSource(),
-            RandomJobsSource(Random()),
         ]
+    )
+    process_jobs.add_source(
+        RandomJobsSource(Random(1)),
     )
     process_jobs.execute()
 

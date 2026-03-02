@@ -10,8 +10,15 @@ class ProcessJobs:
         self._sources = [] if sources is None else sources
 
     def add_source(self, src: DataSource) -> None:
-        self._sources.append(src)
+        if isinstance(src, DataSource):
+            self._sources.append(src)
+        else:
+            raise TypeError(
+                f'Источник {src.__class__.__name__} должен соотвествовать контракту DataSource'
+            )
 
     def execute(self) -> None:
         for src in self._sources:
-            logger.info(f'Jobs from {src.__class__.__name__}: {src.get_tasks()}')
+            logger.info(
+                f'Process jobs from {src.__class__.__name__}: {src.get_tasks()}'
+            )
