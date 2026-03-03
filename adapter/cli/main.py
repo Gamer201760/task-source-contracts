@@ -1,3 +1,4 @@
+import argparse
 from logging import INFO, basicConfig, getLogger
 from random import Random
 
@@ -10,12 +11,18 @@ basicConfig(format='[%(levelname)s] %(name)s %(asctime)s %(message)s', level=INF
 logger = getLogger(__name__)
 
 
-def main():
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--file', default='./tasks.json', help='Путь до файла с задачами'
+    )
+    args = parser.parse_args()
+
     logger.info('Waiting data...')
     process = ProcessTasks(
         [
             MockExternalSource(),
-            TaskJsonSource('./tasks.json'),
+            TaskJsonSource(args.file),
         ]
     )
     process.add_source(
