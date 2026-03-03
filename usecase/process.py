@@ -5,7 +5,7 @@ from usecase.interface import DataSource
 logger = getLogger(__name__)
 
 
-class ProcessJobs:
+class ProcessTasks:
     def __init__(self, sources: list[DataSource] | None = None) -> None:
         self._sources = [] if sources is None else sources
 
@@ -20,5 +20,5 @@ class ProcessJobs:
     def execute(self) -> None:
         for src in self._sources:
             logger.info(
-                f'Process jobs from {src.__class__.__name__}: {src.get_tasks()}'
+                f'Process tasks from {src.__class__.__name__}: {src.get_tasks()}'
             )

@@ -2,6 +2,6 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Job:
+class Task:
     id: int
     payload: dict

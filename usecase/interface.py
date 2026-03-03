@@ -1,8 +1,8 @@
 from typing import Protocol, runtime_checkable
 
-from domain.job import Job
+from domain.task import Task
 
 
 @runtime_checkable
 class DataSource(Protocol):
-    def get_tasks(self) -> list[Job]: ...
+    def get_tasks(self) -> list[Task]: ...
