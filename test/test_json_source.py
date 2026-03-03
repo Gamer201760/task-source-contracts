@@ -43,3 +43,15 @@ def test_json_source_root_not_list(non_list_json_file: Path) -> None:
 
     with pytest.raises(TypeError):
         source.get_tasks()
+
+
+def test_json_source_unreadable_file(tmp_path: Path) -> None:
+    path = tmp_path / 'locked.json'
+    path.write_text('[]', encoding='utf-8')
+    path.chmod(0o000)
+    source = TaskJsonSource(path)
+
+    with pytest.raises(OSError):
+        source.get_tasks()
+
+    path.chmod(0o644)
