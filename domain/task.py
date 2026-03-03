@@ -21,11 +21,11 @@ class Task:
 
         if not isinstance(task_id, int):
             raise TypeError(
-                f'Task.id долежн быть int, получили {type(task_id).__name__}'
+                f'Task.id должен быть int, получили {type(task_id).__name__}'
             )
         if not isinstance(payload, dict):
             raise TypeError(
-                f'Task.payload долежн быть dict, получили {type(payload).__name__}'
+                f'Task.payload должен быть dict, получили {type(payload).__name__}'
             )
 
         return cls(id=task_id, payload=payload)
