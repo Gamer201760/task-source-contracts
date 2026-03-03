@@ -14,6 +14,7 @@ class TaskJsonSource:
         if not self._path.is_file():
             raise IsADirectoryError(f'Ожидался файл, но получен каталог: {self._path}')
 
+        # Чтение файла и парсинг JSON
         try:
             text = self._path.read_text(encoding='utf-8')
         except OSError as e:
@@ -31,4 +32,5 @@ class TaskJsonSource:
                 f'Корневой элемент JSON должен быть списком задач, получено: {type(data).__name__}'
             )
 
+        # Каждый элемент массива превращаем в Task
         return [Task.from_json(item) for item in data]

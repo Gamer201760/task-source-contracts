@@ -6,6 +6,7 @@ class Task:
     id: int
     payload: dict
 
+    # Фабрика из сырого JSON объекта с валидацией
     @classmethod
     def from_json(cls, obj: object) -> 'Task':
         if not isinstance(obj, dict):

@@ -29,12 +29,15 @@ uv run mypy .                          # проверка типов
 
 ### Аргументы командной строки
 
-```bash
-uv run python -m adapter.cli.main --file path/to/tasks.json
-make run ARGS="--file path/to/tasks.json"
-```
+| Аргумент | По умолчанию   | Описание                            |
+| -------- | -------------- | ----------------------------------- |
+| `--file` | `./tasks.json` | Путь до файла с задачами            |
+| `--seed` | `1`            | Seed для генератора случайных задач |
 
-По умолчанию используется файл `tasks.json` в корне проекта.
+```bash
+uv run python -m adapter.cli.main --file path/to/tasks.json --seed 42
+make run ARGS="--file path/to/tasks.json --seed 42"
+```
 
 ## Архитектура
 

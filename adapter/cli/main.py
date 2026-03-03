@@ -16,8 +16,12 @@ def main() -> None:
     parser.add_argument(
         '--file', default='./tasks.json', help='Путь до файла с задачами'
     )
+    parser.add_argument(
+        '--seed', type=int, default=1, help='Seed для генератора случайных задач'
+    )
     args = parser.parse_args()
 
+    # Сборка источников и запуск обработки
     logger.info('Waiting data...')
     process = ProcessTasks(
         [
@@ -26,7 +30,7 @@ def main() -> None:
         ]
     )
     process.add_source(
-        RandomJobsSource(Random(1)),
+        RandomJobsSource(Random(args.seed)),
     )
     process.execute()
 

@@ -7,6 +7,7 @@ class RandomJobsSource:
     def __init__(self, rnd: Random) -> None:
         self._rnd = rnd
 
+    # Количество задач и данные определяются генератором
     def get_tasks(self) -> list[Task]:
         return [
             Task(
