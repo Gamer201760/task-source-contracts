@@ -16,6 +16,9 @@ dev = [
     "ruff>=0.13.1",
 ]
 
+[tool.mypy]
+exclude = ["test"]
+
 [tool.pytest.ini_options]
 log_cli = true
 log_cli_level = "INFO"

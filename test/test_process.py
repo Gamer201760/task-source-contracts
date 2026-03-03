@@ -4,6 +4,7 @@ import pytest
 
 from domain.task import Task
 from repository.api.mock import MockExternalSource
+from usecase.interface import DataSource
 from usecase.process import ProcessTasks
 
 
@@ -26,7 +27,7 @@ def test_process_tasks_create_empty() -> None:
 def test_process_tasks_create_with_sources(
     mock_external_source: MockExternalSource,
 ) -> None:
-    sources = [mock_external_source]
+    sources: list[DataSource] = [mock_external_source]
     process = ProcessTasks(sources)
 
     assert process._sources is sources
