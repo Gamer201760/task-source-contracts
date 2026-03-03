@@ -12,8 +12,12 @@ dependencies = []
 dev = [
     "mypy>=1.18.2",
     "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
     "ruff>=0.13.1",
 ]
+
+[tool.mypy]
+exclude = ["test"]
 
 [tool.pytest.ini_options]
 log_cli = true

@@ -1,14 +1,16 @@
-.PHONY: test lint typecheck run pre-commit
+.PHONY: help run test install lint typecheck pre-commit
 
 help:
 	@echo "Доступные команды:"
+	@echo "  make run          - Запустить приложение"
 	@echo "  make install      - Установить все зависимости"
-	@echo "  make infix        - Запустить калькулятор в инфиксном режиме"
-	@echo "  make rpn          - Запустить калькулятор в режиме RPN"
 	@echo "  make test         - Запустить тесты pytest"
 	@echo "  make lint         - Запустить линтер ruff"
 	@echo "  make typecheck    - Запустить проверку типов mypy"
 	@echo "  make pre-commit   - Запустить все проверки (lint, typecheck, test)"
+
+run:
+	uv run python -m adapter.cli.main $(ARGS)
 
 install:
 	uv sync
@@ -21,11 +23,5 @@ lint:
 
 typecheck:
 	uv run mypy .
-
-infix:
-	uv run main.py 
-
-rpn:
-	uv run main.py --rpn
 
 pre-commit: lint typecheck test
