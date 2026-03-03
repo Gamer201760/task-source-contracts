@@ -2,6 +2,7 @@ from logging import INFO, basicConfig, getLogger
 from random import Random
 
 from repository.api.mock import MockExternalSource
+from repository.file.json import TaskJsonSource
 from repository.generator.rand import RandomJobsSource
 from usecase.process import ProcessTasks
 
@@ -14,6 +15,7 @@ def main():
     process = ProcessTasks(
         [
             MockExternalSource(),
+            TaskJsonSource('./tasks.json'),
         ]
     )
     process.add_source(

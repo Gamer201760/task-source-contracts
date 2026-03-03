@@ -5,3 +5,27 @@ from dataclasses import dataclass
 class Task:
     id: int
     payload: dict
+
+    @classmethod
+    def from_json(cls, obj: object) -> 'Task':
+        if not isinstance(obj, dict):
+            raise TypeError(f'Task JSON must be an object, got {type(obj).__name__}')
+
+        if 'id' not in obj:
+            raise ValueError("Не найден параметер 'id'")
+        if 'payload' not in obj:
+            raise ValueError("Не найден параметер 'payload'")
+
+        task_id = obj['id']
+        payload = obj['payload']
+
+        if not isinstance(task_id, int):
+            raise TypeError(
+                f'Task.id долежн быть int, получили {type(task_id).__name__}'
+            )
+        if not isinstance(payload, dict):
+            raise TypeError(
+                f'Task.payload долежн быть dict, получили {type(payload).__name__}'
+            )
+
+        return cls(id=task_id, payload=payload)
