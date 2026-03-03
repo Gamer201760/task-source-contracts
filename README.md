@@ -53,7 +53,7 @@ usecase/             бизнес логика и контракт
 domain/              ядро: сущность Task
 ```
 
-**Направление зависимостей:** `adapter/ → repository/ → usecase/ → domain/`
+**Направление зависимостей:** `adapter/ -> repository/ -> usecase/ -> domain/`
 
 Внутренние слои ничего не знают о внешних. `domain/` не импортирует никого, `usecase/` зависит только от `domain/`.
 
