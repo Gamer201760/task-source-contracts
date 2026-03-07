@@ -7,7 +7,7 @@ logger = getLogger(__name__)
 
 class ProcessTasks:
     def __init__(self, sources: list[DataSource] | None = None) -> None:
-        self._sources = [] if sources is None else sources
+        self._sources = sources or []
 
     def add_source(self, src: DataSource) -> None:
         if isinstance(src, DataSource):
